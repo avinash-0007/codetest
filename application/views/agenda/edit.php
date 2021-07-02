@@ -33,7 +33,7 @@
             <div class="form-group">
                 <label class="col-md-3">Schedule Date</label>
                 <div class="col-md-9">
-                   <input type='text' name="schedule_date" value="<?php echo $agendaarr->schedule_date; ?>" class="form-control" id='dtpickerdemo' />
+                   <input type='text' name="schedule_date" value="<?php echo $agendaarr->schedule_date; ?>" class="form-control" id='dtpickerdemo2' />
                 </div>
             </div>
         </div>
