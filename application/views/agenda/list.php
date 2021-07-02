@@ -2,6 +2,7 @@
     <div class="col-lg-12">           
         <h2>Agenda CRUD           
             <div class="pull-right">
+			<a class="btn btn-primary" href="<?php echo base_url('agenda');?>"> List Agenda</a>
                <a class="btn btn-primary" href="<?php echo base_url('agenda/create');?>"> Create New Agenda</a>
 			   <a class="btn btn-primary" href="<?php echo base_url('agenda/import');?>">Import Agenda</a>
 			   <a class="btn btn-primary" href="<?php echo base_url('agenda/export');?>">Export Agenda</a>

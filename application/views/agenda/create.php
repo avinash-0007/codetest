@@ -1,7 +1,8 @@
 <h1 style="text-align:center;">Create Agenda</h1>
-<form method="post" action="<?php echo base_url('agendaCreate');?>">
+<form method="post" name="agendaCreate" action="<?php echo base_url('agendaCreate');?>">
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
+		<?php echo validation_errors(); ?>
             <div class="form-group">
                 <label class="col-md-3">Title</label>
                 <div class="col-md-9">
