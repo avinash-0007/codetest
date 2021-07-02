@@ -9,10 +9,12 @@
                 $('#dtpickerdemo').datetimepicker({minDate:new Date()});
 				
             });
+			<?php if(@$agendaarr->schedule_date!=''){?>
 			 $(function () {
-                $('#dtpickerdemo2').datetimepicker({minDate:new Date(),defaultDate:<?php echo $agendaarr->schedule_date; ?>});
+                $('#dtpickerdemo2').datetimepicker({minDate:new Date(),defaultDate:<?php echo @$agendaarr->schedule_date; ?>});
 				
             });
+			<?php } ?>
 			// Wait for the DOM to be ready
 $(function() {
   // Initialize form validation on the registration form.
