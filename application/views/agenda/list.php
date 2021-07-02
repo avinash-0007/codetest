@@ -13,6 +13,8 @@
       <tr>
           <th>Title</th>
           <th>Description</th>
+		  <th>Schedule Date</th>
+		  <th>Status</th>
       <th>Action</th>
       </tr>
   </thead>
@@ -20,7 +22,9 @@
    <?php foreach ($data as $d) { ?>      
       <tr>
           <td><?php echo $d->title; ?></td>
-          <td><?php echo $d->description; ?></td>          
+          <td><?php echo $d->description; ?></td>  
+		<td><?php echo $d->schedule_date; ?></td>    
+			<td><?php echo $d->status; ?></td>    		  
       <td>
         <form method="DELETE" action="<?php echo base_url('agenda/delete/'.$d->id);?>">
          <a class="btn btn-info btn-xs" href="<?php echo base_url('agenda/edit/'.$d->id) ?>"><i class="glyphicon glyphicon-pencil"></i></a>
