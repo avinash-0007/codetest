@@ -70,4 +70,52 @@ class Agenda extends CI_Controller {
        $this->db->delete('agenda');
        redirect(base_url('agenda'));
    }
+   
+   public function import()
+	{ 	
+		$this->load->view('includes/header');
+		$this->load->view('agenda/import_data');
+		$this->load->view('includes/footer');  
+		if(isset($_POST["submit"]))
+		{
+			$agendaobj=new AgendaModel;
+			$file = $_FILES['file']['tmp_name'];
+			$handle = fopen($file, "r");
+			$c = 0;//
+			while(($filesop = fgetcsv($handle, 1000, ",")) !== false)
+			{
+				$title = $filesop[0];
+				$description = $filesop[1];
+				$schedule_date = $filesop[2];
+				$status = $filesop[3];
+				if($c<>0){					/* SKIP THE FIRST ROW */
+					$agendaobj->saverecords($title,$description,$schedule_date,$status);
+				}
+				$c = $c + 1;
+			}
+			echo "sucessfully import data !";
+				
+		}
+	}
+	
+	public function export(){ 
+		$agendaobj=new AgendaModel;
+		/* file name */
+		$filename = 'agenda_'.date('Ymd').'.csv'; 		
+		header("Content-Description: File Transfer"); 
+		header("Content-Disposition: attachment; filename=$filename"); 
+		header("Content-Type: application/csv; ");
+		
+	   /* get data */
+		$usersData = $agendaobj->get_agenda_array();
+		/* file creation */
+		$file = fopen('php://output','w'); 
+		$header = array("Title","Description","Schedule Date","Status"); 
+		fputcsv($file, $header);
+		foreach ($usersData as $key=>$line){ 
+			fputcsv($file,$line); 
+		}
+		fclose($file); 
+		exit; 
+	}
 }

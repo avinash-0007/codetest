@@ -9,6 +9,13 @@ class AgendaModel extends CI_Model{
         $query = $this->db->get("agenda");
         return $query->result();
     }
+	function get_agenda_array(){
+ 		$response = array();
+		$this->db->select('title,description,schedule_date,status');
+		$q = $this->db->get('agenda');
+		$response = $q->result_array();
+	 	return $response;
+	}
     public function insert_agenda()
     {    
         $data = array(
@@ -36,5 +43,13 @@ class AgendaModel extends CI_Model{
             return $this->db->update('agenda',$data);
         }        
     }
+	function saverecords($title,$description,$schedule_date,$status)
+	{
+		$cdate=date('Y-m-d  H:i:s');
+		$query="insert into agenda (title,description,schedule_date,status,created_date) values('$title','$description','$schedule_date','$status','$cdate')";
+		$this->db->query($query);
+	}
+	
+
 }
 ?>
